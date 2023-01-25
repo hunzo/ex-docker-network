@@ -10,11 +10,11 @@ services:
       WORDPRESS_DB_PASSWORD: db_password
       TZ: Asia/Bangkok
     volumes:
-      - ./wp/html:/var/www/html
+      - ./html:/var/www/html
+    expose:
+      - 80
     networks:
       - ext
-    ports:
-      - 8080:80
     restart: always
 
 networks:
