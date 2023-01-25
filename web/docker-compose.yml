@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  wordpress:
+    image: wordpress:6.1.1-php8.2-apache
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: db
+      WORDPRESS_DB_USER: db_user
+      WORDPRESS_DB_PASSWORD: db_password
+      TZ: Asia/Bangkok
+    volumes:
+      - ./wp/html:/var/www/html
+    networks:
+      - ext
+    ports:
+      - 8080:80
+    restart: always
+
+networks:
+  ext:
+    name: ext-network
+    external: true
